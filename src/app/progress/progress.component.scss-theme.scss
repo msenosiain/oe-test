@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+
+// mixin name will be used in main style.scss
+@mixin oe-progress-component-theme($theme) {
+
+  // retrieve variables from theme 
+  // (all possible variables, use only what you really need)
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  // all of these variables contain many additional variables
+
+  .oe-progress {
+
+    .level {
+      color: $light-primary-text;
+
+      &.current {
+        background-color: mat-color($primary);
+      }
+
+      &.next {
+        background-color: mat-color($mat-grey, 500);
+      }
+    }
+
+    .bar {
+      border: {
+        top: {
+          color: mat-color($mat-grey, 300);
+        }
+
+        bottom: {
+          color: mat-color($mat-grey, 300);
+        }
+      }
+
+      .progress {
+        .value {
+          .indicator {
+            border-bottom-color: mat-color($accent);
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin oe-progress-component-typography($config) {
+  .oe-progress {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+
+    .level {
+      .value {
+        font-size: mat-font-size($config, display-1);
+      }
+    }
+
+    .bar {
+      font-weight: mat-font-weight($config, body-2);
+
+      .start,
+      .end {
+        line-height: mat-line-height($config, display-2)
+      }
+    }
+  }
+}

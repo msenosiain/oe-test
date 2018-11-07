@@ -1,0 +1,41 @@
+<div class="oe-progress">
+  <h2 class="mat-h2">Mi Progreso</h2>
+  <div fxLayout="row" fxLayoutAlign="center center" class="bottom-shadow">
+
+    <div fxLayout="column" fxFlex="5" class="level current">
+      <span class="value">
+        {{progress.currentLevel}}
+      </span>
+      <span class="label">Nivel</span>
+    </div>
+
+    <div fxFlex fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="center center" class="bar">
+
+      <div fxFlex="4" class="start"> 
+        0%
+      </div>
+      
+      <div fxFlex fxLayout="column" fxLayoutAlign="center" class="progress">
+        <div class="value" [ngStyle]="{'margin-left': levelProgressPercent}" fxLayout="column">
+          <span>{{progress.levelProgressPercent | number:'1.0-0' }}%</span>
+          <span class="indicator"></span>
+        </div>
+        <mat-progress-bar mode="determinate" [value]="progress.levelProgressPercent" color="accent"></mat-progress-bar>
+      </div>
+
+      <div fxFlex="4" class="end">
+        100%
+      </div>
+
+    </div>
+
+    <div fxLayout="column" fxFlex="5" class="level next">
+      <span class="value">
+        {{progress.nextLevel}}
+      </span>
+      <span class="label">Nivel</span>
+    </div>
+
+  </div>
+
+</div>

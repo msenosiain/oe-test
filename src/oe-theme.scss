@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
+@import '~@angular/material/theming';
+@import 'app/progress/progress.component.scss-theme';
+
+@include mat-core();
+
+$oe-primary-palette: mat-palette($mat-blue);
+$oe-accent-palette: mat-palette($mat-deep-orange);
+
+$oe-theme: mat-light-theme($oe-primary-palette, $oe-accent-palette);
+
+// Custom typography
+$config: mat-typography-config(
+    $font-family: 'Open Sans, sans-serif'
+    
+);
+
+@include mat-base-typography($config);
+@include angular-material-typography($config);
+@include mat-core($config);
+
+// Custom components themes
+@mixin oe-theme($oe-theme, $config) {
+  @include oe-progress-component-theme($oe-theme);
+  @include oe-progress-component-typography($config);
+}
+
+// Custom theme
+@include angular-material-theme($oe-theme);
+@include oe-theme($oe-theme, $config);

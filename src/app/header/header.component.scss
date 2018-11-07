@@ -1,0 +1,23 @@
+@import '../../scss/variables';
+
+.oe-header {
+
+  .title-bar {
+    padding: 0 120px;
+
+    &.main {
+      background-color: $white;
+      z-index: 1;
+
+      .logo {
+        width: 120px;
+      }
+    }
+
+    &.secondary {
+      
+      font-weight: 600;
+      color: $white;
+    }
+  }
+}
