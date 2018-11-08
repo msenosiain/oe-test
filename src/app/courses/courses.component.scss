@@ -1,0 +1,21 @@
+.oe-courses {
+  padding: 24px 120px 0 120px;
+
+  .mat-expansion-panel-header-title {
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .mat-expansion-panel-header-description {
+    .timer {
+      margin: 0 3px 0 6px;
+    }
+
+    .mat-icon {
+      height: 14px;
+      width: 14px;
+      padding-top: 2px
+    }
+  }
+}

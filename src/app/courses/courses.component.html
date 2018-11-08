@@ -1,0 +1,52 @@
+<div class="oe-courses">
+  <mat-accordion multi="true">
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <h2 class="mat-h2" fxFlex="140px">Clases en Vivo</h2>
+          <div fxFlex fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <span class="mat-small">1/10</span>
+            <mat-progress-bar fxFlex mode="determinate" value="10" color="primary"></mat-progress-bar>
+            <span class="mat-small">10%</span>
+          </div>
+        </mat-panel-title>
+
+        <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
+          <span>La inscripcion se cierra en</span><span class="timer">02:01</span><mat-icon>access_time</mat-icon>
+        </mat-panel-description>
+
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <h2 class="mat-h2" fxFlex="140px">Lecciones</h2>
+          <div fxFlex="50" fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <span class="mat-small">1/10</span>
+            <mat-progress-bar fxFlex="40" mode="determinate" value="10" color="primary"></mat-progress-bar>
+            <span class="mat-small">10%</span>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+          <h2 class="mat-h2" fxFlex="140px">Prácticas</h2>
+          <div fxFlex="50" fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <span class="mat-small">1/10</span>
+            <mat-progress-bar fxFlex="40" mode="determinate" value="10" color="primary"></mat-progress-bar>
+            <span class="mat-small">10%</span>
+          </div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>

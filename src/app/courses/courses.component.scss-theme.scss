@@ -1,0 +1,55 @@
+@import '~@angular/material/theming';
+
+// mixin name will be used in main style.scss
+@mixin oe-courses-component-theme($theme) {
+
+  // retrieve variables from theme 
+  // (all possible variables, use only what you really need)
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  // all of these variables contain many additional variables
+
+  .oe-courses {
+    .mat-expansion-panel-header-title {
+      h2 {
+        color: mat-color($primary);
+      }
+    }
+
+    .mat-expansion-panel-header-description {
+      .timer {
+        color: mat-color($accent);
+      }
+
+      .mat-icon {
+        color: mat-color($primary, 300);
+      }
+    }
+  }
+
+}
+
+@mixin oe-courses-component-typography($config) {
+  .oe-courses {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+
+    .mat-expansion-panel-header-description {
+      .timer {
+        font-weight: mat-font-weight($config, body-2);
+      }
+
+      .mat-icon {
+        font-size: mat-font-size($config, body-1);
+      }
+    }
+
+  }
+}

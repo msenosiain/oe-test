@@ -15,6 +15,10 @@
 
   .oe-progress {
 
+    h2 {
+      color: mat-color($primary);
+    }
+
     .level {
       color: $light-primary-text;
 
