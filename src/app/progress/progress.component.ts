@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IProgress } from './progress';
 
-
-
-
 @Component({
   selector: 'oe-progress',
   templateUrl: './progress.component.html',

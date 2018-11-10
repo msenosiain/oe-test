@@ -2,6 +2,12 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import 'scss/variables';
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 .bottom-shadow {
   box-shadow: 0px 5px 5px -4px $shadow;
 }

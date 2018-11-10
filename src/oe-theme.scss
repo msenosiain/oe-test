@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600');
 
+@import 'app/app.component.scss-theme';
 @import 'app/header/header.component.scss-theme';
 @import 'app/progress/progress.component.scss-theme';
 @import 'app/courses/courses.component.scss-theme';
@@ -25,6 +26,10 @@ $config: mat-typography-config(
 
 // Custom components themes
 @mixin oe-theme($oe-theme, $config) {
+
+  @include oe-root-component-theme($oe-theme);
+  @include oe-root-component-typography($config);
+  
   @include oe-header-component-theme($oe-theme);
   @include oe-header-component-typography($config);
 

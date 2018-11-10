@@ -18,4 +18,54 @@
       padding-top: 2px
     }
   }
+
+  .mat-grid-tile {
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .mat-grid-tile-header {
+      height: 36px;
+
+      mat-icon {
+        margin-top: -10px;
+        margin-left: 4px;
+        transform: scaleY(-1);
+      }
+    }
+
+    .mat-grid-tile-footer {
+      height: 92px;
+      padding: 8px;
+
+      .title {
+        margin-top: 8px;
+        margin-bottom: 2px;
+        font-weight: 600;
+      }
+    }
+  }
+
+
+  .lessons,
+  .practices {
+    .mat-grid-tile {
+      background-size: cover;
+
+      .mat-grid-tile-header {
+        .status {
+          padding: 2px;
+          border-radius: 4px;
+          text-align: center;
+        }
+      }
+
+      .mat-grid-tile-footer {
+        .title {
+          margin: 0;
+        }
+      }
+
+    }
+  }
+
 }

@@ -11,8 +11,6 @@
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  // all of these variables contain many additional variables
-
   .oe-courses {
     .mat-expansion-panel-header-title {
       h2 {
@@ -28,6 +26,31 @@
       .mat-icon {
         color: mat-color($primary, 300);
       }
+    }
+
+    .mat-grid-tile {
+
+      .mat-grid-tile-header,
+      .mat-grid-tile-footer {
+        background: rgba(255, 255, 255, 0.5);
+        color: black;
+      }
+    }
+
+    .lessons,
+    .practices {
+      .mat-grid-tile-header {
+        background-color: transparent;
+        color: white;
+
+        .status {
+          background-color: mat-color($primary);
+        }
+      }
+    }
+
+    .lessons {
+      background-color: mat-color($primary, 50);
     }
   }
 

@@ -1,51 +1,95 @@
 <div class="oe-courses">
   <mat-accordion multi="true">
 
-    <mat-expansion-panel>
+    <mat-expansion-panel expanded="true" class="live-classes">
       <mat-expansion-panel-header>
-        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+        <mat-panel-title fxFlex="400px" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
           <h2 class="mat-h2" fxFlex="140px">Clases en Vivo</h2>
           <div fxFlex fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-            <span class="mat-small">1/10</span>
-            <mat-progress-bar fxFlex mode="determinate" value="10" color="primary"></mat-progress-bar>
-            <span class="mat-small">10%</span>
+            <span class="mat-small">{{progress.liveClassTaken}}/{{progress.liveClassRequired}}</span>
+            <mat-progress-bar fxFlex mode="determinate" [value]="progress.liveClassProgressPercent" color="primary"></mat-progress-bar>
+            <span class="mat-small">{{progress.liveClassProgressPercent}}%</span>
           </div>
         </mat-panel-title>
 
-        <mat-panel-description fxLayout="row" fxLayoutAlign="end center">
-          <span>La inscripcion se cierra en</span><span class="timer">02:01</span><mat-icon>access_time</mat-icon>
+        <mat-panel-description fxFlex fxLayout="row" fxLayoutAlign="end center">
+          <oe-timer *ngIf="!expired" [seconds]="61" (finish)="timeUp($event)"></oe-timer>
+          <button *ngIf="expired" mat-stroked-button color="accent" (click)="restart($event)">Ingresar</button>
         </mat-panel-description>
 
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+
+      <mat-grid-list cols="2" rowHeight="4:3" gutterSize="16">
+        <mat-grid-tile *ngFor="let liveClass of liveClasess" rowspan="1" colspan="1" [style.background-image]="'url(' + liveClass.img + ')'">
+          <mat-grid-tile-header fxLayout="row" fxLayoutAlign="start center">
+            <span>{{liveClass.typeDescription}}</span>
+            <mat-icon>error_outline</mat-icon>
+          </mat-grid-tile-header>
+          <mat-grid-tile-footer fxLayout="row" fxLayoutAlign="start center">
+            <div fxFlex="80" fxLayout="column" fxLayoutAlign="start start">
+              <span class="title mat-subheading-1">{{liveClass.title}}</span>
+              <span>{{liveClass.description}}</span>
+              <a *ngIf="liveClass.document" mat-button color="accent" [href]="liveClass.document" target="_blank">Ver
+                láminas de clase</a>
+            </div>
+            <div fxFlex="20">
+              <button mat-raised-button color="accent"> Inscríbete</button>
+            </div>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
+
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel class="lessons">
       <mat-expansion-panel-header>
-        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+        <mat-panel-title fxFlex="400px" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
           <h2 class="mat-h2" fxFlex="140px">Lecciones</h2>
-          <div fxFlex="50" fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-            <span class="mat-small">1/10</span>
-            <mat-progress-bar fxFlex="40" mode="determinate" value="10" color="primary"></mat-progress-bar>
-            <span class="mat-small">10%</span>
+          <div fxFlex fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <span class="mat-small">{{progress.lessonTaken}}/{{progress.lessonRequired}}</span>
+            <mat-progress-bar fxFlex mode="determinate" [value]="progress.lessonProgressPercent" color="primary"></mat-progress-bar>
+            <span class="mat-small">{{progress.lessonProgressPercent | number:'1.0-0'}}%</span>
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+
+      <mat-grid-list cols="4" rowHeight="380px" gutterSize="16">
+        <mat-grid-tile *ngFor="let lesson of lessons; let i = index" rowspan="1" colspan="1" [style.background-image]="'url(' + lesson.img + ')'">
+          <mat-grid-tile-header fxLayout="row" fxLayoutAlign="center center">
+            <span fxFlex="50" class="status">{{lesson.status}}</span>
+          </mat-grid-tile-header>
+          <mat-grid-tile-footer fxLayout="column" fxLayoutAlign="start start">
+            <div class="title">{{i+1}})&nbsp;{{lesson.title}}</div>
+            <div class="description">{{lesson.description}}</div>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
+
     </mat-expansion-panel>
 
-    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel class="practices">
       <mat-expansion-panel-header>
-        <mat-panel-title fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+        <mat-panel-title fxFlex="400px" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
           <h2 class="mat-h2" fxFlex="140px">Prácticas</h2>
-          <div fxFlex="50" fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
-            <span class="mat-small">1/10</span>
-            <mat-progress-bar fxFlex="40" mode="determinate" value="10" color="primary"></mat-progress-bar>
-            <span class="mat-small">10%</span>
+          <div fxFlex fxLayoutAlign="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+            <span class="mat-small">{{progress.practiceHoursTaken}}h/{{progress.practiceHoursRequired}}h</span>
+            <mat-progress-bar fxFlex mode="determinate" [value]="progress.practiceProgressPercent" color="primary"></mat-progress-bar>
+            <span class="mat-small">{{progress.practiceProgressPercent | number:'1.0-0'}}%</span>
           </div>
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+
+      <mat-grid-list cols="4" rowHeight="380px" gutterSize="16">
+        <mat-grid-tile *ngFor="let practice of practices" rowspan="1" colspan="1" [style.background-image]="'url(' + practice.img + ')'">
+          <mat-grid-tile-header fxLayout="row" fxLayoutAlign="center center">
+            <span fxFlex="50" class="status">{{practice.status}}</span>
+          </mat-grid-tile-header>
+          <mat-grid-tile-footer fxLayout="column" fxLayoutAlign="start start">
+            <div class="title">{{practice.title}}</div>
+            <div class="description">{{practice.description}}</div>
+          </mat-grid-tile-footer>
+        </mat-grid-tile>
+      </mat-grid-list>
     </mat-expansion-panel>
 
   </mat-accordion>

@@ -2,7 +2,7 @@
   <h2 class="mat-h2">Mi Progreso</h2>
   <div fxLayout="row" fxLayoutAlign="center center" class="bottom-shadow">
 
-    <div fxLayout="column" fxFlex="5" class="level current">
+    <div fxLayout="column" fxFlex="64px" class="level current">
       <span class="value">
         {{progress.currentLevel}}
       </span>
@@ -11,7 +11,7 @@
 
     <div fxFlex fxFlexAlign="stretch" fxLayout="row" fxLayoutAlign="center center" class="bar">
 
-      <div fxFlex="4" class="start"> 
+      <div fxFlex="50px" class="start"> 
         0%
       </div>
       
@@ -23,13 +23,13 @@
         <mat-progress-bar mode="determinate" [value]="progress.levelProgressPercent" color="accent"></mat-progress-bar>
       </div>
 
-      <div fxFlex="4" class="end">
+      <div fxFlex="50px" class="end">
         100%
       </div>
 
     </div>
 
-    <div fxLayout="column" fxFlex="5" class="level next">
+    <div fxLayout="column" fxFlex="64px" class="level next">
       <span class="value">
         {{progress.nextLevel}}
       </span>

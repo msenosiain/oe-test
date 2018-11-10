@@ -4,21 +4,28 @@ import { NgModule } from '@angular/core';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ProgressComponent } from './progress/progress.component';
 import { CoursesComponent } from './courses/courses.component';
+import { TimerComponent } from './timer/timer.component';
 
 const ANGULAR_MATERIAL_MODULES = [
   MatToolbarModule,
   MatProgressBarModule,
   MatExpansionModule,
-  MatIconModule
+  MatIconModule,
+  MatButtonModule,
+  MatGridListModule
 ];
 
 @NgModule({
@@ -26,12 +33,14 @@ const ANGULAR_MATERIAL_MODULES = [
     AppComponent,
     HeaderComponent,
     ProgressComponent,
-    CoursesComponent
+    CoursesComponent,
+    TimerComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    AngularFontAwesomeModule,
     ...ANGULAR_MATERIAL_MODULES
   ],
   providers: [],

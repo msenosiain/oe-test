@@ -1,7 +1,27 @@
-<div fxLayout="row" fxLayoutAlign="center start">
-  <div class="content" fxLayout="column">
+<div class="container" fxLayout="column" fxLayoutAlign="start center">
+  <div class="content" fxFlex="1">
     <oe-header></oe-header>
     <oe-progress [progress]="progress"></oe-progress>
-    <oe-courses></oe-courses>
+    <oe-courses [progress]="progress"></oe-courses>
   </div>
+  <footer class="footer" fxLayout="column" fxLayoutAlign="end center">
+    <h4 class="mat-h4">Mantente Conectado</h4>
+    <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="4px">
+      <span class="social">
+        <fa name="facebook-f"></fa>
+      </span>
+      <span class="social">
+        <fa name="instagram"></fa>
+      </span>
+      <span class="social">
+        <fa name="twitter"></fa>
+      </span>
+      <span class="social">
+        <fa name="youtube"></fa>
+      </span>
+    </div>
+    <div class="links">
+      <a href="#">Terminos</a> | <a href="#">Privacidad</a> | <span>&copy; 2017 Open Education, LLC.</span>
+    </div>
+  </footer>
 </div>

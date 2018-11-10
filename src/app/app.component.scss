@@ -1,4 +1,24 @@
-.content {
-  min-width: 300px;
-  width: 80%;
+.container {
+  min-height: 100%;
+
+  .content {
+    min-width: 300px;
+    width: 80%;
+  }
+
+  .footer {
+    margin-top: 24px;
+    margin-bottom: 8px;
+
+    .social {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+    }
+
+    .links {
+      margin-top: 8px;
+    }
+  }
 }

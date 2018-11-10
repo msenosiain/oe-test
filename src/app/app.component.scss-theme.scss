@@ -1,0 +1,57 @@
+@import '~@angular/material/theming';
+
+// mixin name will be used in main style.scss
+@mixin oe-root-component-theme($theme) {
+
+  // retrieve variables from theme 
+  // (all possible variables, use only what you really need)
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  oe-root {
+    .footer {
+      h4 {
+        color: mat-color($primary);
+      }
+
+      .social {
+        color: $light-primary-text;
+        background-color: mat-color($primary);
+      }
+
+      .links {
+        a {
+          color: $dark-primary-text;
+        }
+      }
+    }
+  }
+
+}
+
+@mixin oe-root-component-typography($config) {
+  oe-root {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+
+    .footer {
+      .social {
+        font-size: 16px;
+        line-height: 32px;
+      }
+
+      .links {
+        font-size: 12px;
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
