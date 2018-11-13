@@ -1,14 +1,17 @@
-import { Component, OnInit, ViewChild, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, Input, OnDestroy } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
 import { ILiveClass, COURSE_TYPE, ICourseItem, COURSE_STATUS } from './course.model';
 import { IProgress } from '../progress/progress';
+import { Subscription } from 'rxjs';
+import { CoursesService } from '../courses.service';
 
 @Component({
   selector: 'oe-courses',
   templateUrl: './courses.component.html',
   styleUrls: ['./courses.component.scss']
 })
-export class CoursesComponent implements OnInit {
+export class CoursesComponent implements OnInit, OnDestroy {
+
 
   @Input()
   progress: IProgress;
@@ -18,33 +21,18 @@ export class CoursesComponent implements OnInit {
   practices: ICourseItem[];
   expired = false;
 
+  private liveClassesSubscription: Subscription;
+
   @ViewChild(TimerComponent)
   private timer: TimerComponent;
 
+  constructor(private coursesService: CoursesService) { }
+
   ngOnInit(): void {
-    // raw arryas should come from a service call subscription
-    const rawLiveClasses = [
-      {
-        title: 'Casual - Cash or Credit?',
-        description: 'Students will discuss vocabulary related to paying with cash or credit',
-        type: 'Casual Conversation',
-        img: 'https://lessons.openenglish.com/production/9204a9f8-1a8d-45e3-b972-f5de61fc50dd/assets/Cash-or-Credit-Image.png',
-        document: 'https://lessons.openenglish.com/production/9204a9f8-1a8d-45e3-b972-f5de61fc50dd/assets/true-beg-port-cash-or-credit-3.pdf'
-      },
-      {
-        title: 'Classic - Photography',
-        description: 'Students will learn vocabulary related to photography',
-        type: 'Classic Instruction',
-        img: 'https://lessons.openenglish.com/production/252684e0-2963-45fd-a592-03b3b1e34a96/assets/photography-image.png',
-        document: 'https://lessons.openenglish.com/production/252684e0-2963-45fd-a592-03b3b1e34a96/assets/photography-1_36.pdf'
-      },
-      {
-        title: 'Private Class',
-        description: 'Some description for the private class',
-        type: 'Private Class',
-        img: 'https://lessons.openenglish.com/production/330b3d33-dc12-4b83-8406-74d26faae653/assets/iStock_PrivateClass1_615x380.jpg'
-      }
-    ];
+    // raw arrays should come from a service call subscription
+    this.liveClassesSubscription = this.coursesService.getLiveClasses().subscribe((rawLiveClasses) => {
+      this.liveClasess = this.transformLiveClases(rawLiveClasses);
+    });
 
     const rawItems = [{
       title: 'What is Your Address?',
@@ -104,9 +92,13 @@ export class CoursesComponent implements OnInit {
     }
     ];
 
-    this.liveClasess = this.getLiveClases(rawLiveClasses);
+    // this.liveClasess = this.getLiveClases(rawLiveClasses);
     this.lessons = this.getLessons(rawItems);
     this.practices = this.getPractices(rawItems);
+  }
+
+  ngOnDestroy(): void {
+    this.liveClassesSubscription.unsubscribe();
   }
 
   timeUp($event) {
@@ -121,7 +113,7 @@ export class CoursesComponent implements OnInit {
     }, 0);
   }
 
-  private getLiveClases(rawLiveClasses: any[]): ILiveClass[] {
+  private transformLiveClases(rawLiveClasses: any[]): ILiveClass[] {
     return rawLiveClasses.map((rlc) => {
       const { title, description, img, document } = rlc;
 

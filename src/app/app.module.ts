@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
@@ -39,6 +41,7 @@ const ANGULAR_MATERIAL_MODULES = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FlexLayoutModule,
     AngularFontAwesomeModule,
     ...ANGULAR_MATERIAL_MODULES
