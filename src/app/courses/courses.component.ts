@@ -3,7 +3,7 @@ import { TimerComponent } from '../timer/timer.component';
 import { ILiveClass, COURSE_TYPE, ICourseItem, COURSE_STATUS } from './course.model';
 import { IProgress } from '../progress/progress';
 import { Subscription } from 'rxjs';
-import { CoursesService } from '../courses.service';
+import { CoursesService } from './course.service';
 
 @Component({
   selector: 'oe-courses',
